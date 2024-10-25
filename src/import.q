@@ -8,7 +8,7 @@ lib: {[f]
     if[null p:fs first where fs like "*",(string f),"*";'"Library does not exist: ",string f];
     system "l ", sp:1 _ string p;
     infoLog "Library imported: `",(string f)," from Path: ",sp;
-    if[`init in key ns:` sv ``util,u;
+    if[`init in key ns:` sv `,u;
         .Q.dd[ns;`init][];
         infoLog "Executed init function in ",string f
     ]};
