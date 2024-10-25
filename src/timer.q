@@ -69,7 +69,7 @@ ts: {[jids]
 	if[not count jids; :(::)];
 
     t: (select from scd where jid in jids) lj cb;
-    brs: flip exec .eh.trap each valuable from t;
+    brs: flip exec .eh.trp each valuable from t;
     t: update lastRun:.time.p[] from t where jid in jids;
     if[sum isFailed:not first brs; .log.info @' "Failed timer jobs: ",/: (exec .Q.s1 each valuable from t where isFailed) ,' " with error: ",/: (last brs) where isFailed];
 
