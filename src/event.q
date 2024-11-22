@@ -25,6 +25,7 @@ scd: {[name; cbid]
     .timer.add`valuable`mode`interval!((`.event.ex; name; cbid; .z.w); `UntilSucceed; 0);
     (1b; "OK")
     };
+scd0: scd[;0Ng];
 ncb: (::);
 reg: ([name:`$()] v:()) upsert (`; (::));
 cbreg: ([id:"g"$()] eventNameRef:`$(); func:`$()) upsert (0Ng; `; `);
