@@ -16,11 +16,10 @@ gh: {[q;a;p;ds]
     };
 ah: {[t;a]  // t: keyed table
     fd: fd0,(enlist`histo)!enlist{z binr'ceiling x*y};
-    if[count p:c!({sums(asc key x)#x}@'),/:c:distinct{x[2]where`histo~/:x 0}flip value a;
+    if[count p:c!({sums(asc key x)#x}@'),/:c:distinct{x[;2]where`histo~/:x[;0]}value a;
         t:({eval(!;x;();0b;y)}/)[t;(::;{(`$"last",/:string k)!(last@'),/:k:key x})@\:p];
-        a:(key a)!@[value a;i:where(v:value a[;2])in c;{x,last x}];
-        a[;2]:@[v;i;{`$"last",string x}];
+        a:(key a)!@[value a;i:where(v:value a[;2])in c;{@[x,last x;2;{`$"last",string x}]}];
     ];
-    a[;0]:@[v;where any(v:value a[;0])~\:/:key fd;fd];
+    a:(key a)!(1_@[v;where any(v:(::),value a[;0])~\:/:key fd;fd]),'1_/:value a;
     (count tk)!eval(?;t;();0b;(tk!tk:keys t),a)
     };
